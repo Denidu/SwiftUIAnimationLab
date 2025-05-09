@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct AnimatedCardView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    let title: String
+    let background: Color
 
-#Preview {
-    AnimatedCardView()
+    var body: some View {
+        Text(title)
+            .font(.title3)
+            .bold()
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(background)
+            .foregroundStyle(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .shadow(radius: 4)
+    }
 }

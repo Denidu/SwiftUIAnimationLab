@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct DebugLogger {
+    static func log(_ message: String) {
+        #if DEBUG
+        print("[DEBUG] \(message)")
+        #endif
+    }
+}
+

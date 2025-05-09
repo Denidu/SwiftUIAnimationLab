@@ -7,12 +7,17 @@
 
 import SwiftUI
 
-struct AnimationDemo: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+struct AnimationDemo: Identifiable {
+    let id = UUID()
+    let title: String
+    let subtitle: String?
+    let view: AnyView
 
-#Preview {
-    AnimationDemo()
+    static let samples: [AnimationDemo] = [
+        AnimationDemo(title: "Matched Geometry", subtitle: "Smooth transitions between views", view: AnyView(MatchedGeometryDemo())),
+        AnimationDemo(title: "Spring Chain", subtitle: "Sequential movement with delay", view: AnyView(SpringChainDemo())),
+        AnimationDemo(title: "Custom Easing", subtitle: "Bezier curve control", view: AnyView(CustomEasingDemo())),
+        AnimationDemo(title: "Scroll Effects", subtitle: "React to scroll offset", view: AnyView(ScrollEffectsDemo())),
+        AnimationDemo(title: "Path Morphing", subtitle: "Shape transitions", view: AnyView(PathMorphingDemo()))
+    ]
 }

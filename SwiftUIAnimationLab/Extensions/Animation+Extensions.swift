@@ -7,12 +7,10 @@
 
 import SwiftUI
 
-struct Animation_Extensions: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+extension Animation {
+    static func elastic(duration: Double = 1.0) -> Animation {
+        .interpolatingSpring(stiffness: 100, damping: 5)
+            .speed(1.5)
+            .delay(0.1)
     }
-}
-
-#Preview {
-    Animation_Extensions()
 }

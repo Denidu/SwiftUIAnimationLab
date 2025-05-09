@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct PathMorphingDemo: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    @State private var morph = false
 
-#Preview {
-    PathMorphingDemo()
+    var body: some View {
+        VStack {
+            MorphingShape(morphAmount: morph ? 1.0 : 0.0)
+                .stroke(.red, lineWidth: 4)
+                .frame(width: 200, height: 200)
+                .animation(.easeInOut(duration: 1.0), value: morph)
+
+            Button("Morph") {
+                morph.toggle()
+            }
+        }
+        .navigationTitle("Path Morphing")
+        .padding()
+    }
 }

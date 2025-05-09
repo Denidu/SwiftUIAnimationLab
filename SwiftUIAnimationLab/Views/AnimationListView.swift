@@ -8,11 +8,22 @@
 import SwiftUI
 
 struct AnimationListView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    let demos = AnimationDemo.samples
 
-#Preview {
-    AnimationListView()
+    var body: some View {
+        List(demos) { demo in
+            NavigationLink(destination: demo.view) {
+                VStack(alignment: .leading) {
+                    Text(demo.title)
+                        .font(.headline)
+                    if let subtitle = demo.subtitle {
+                        Text(subtitle)
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
+        }
+        .navigationTitle("SwiftUI Animations Lab")
+    }
 }

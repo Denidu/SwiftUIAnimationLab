@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct CustomEasingDemo: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    @State private var toggle = false
 
-#Preview {
-    CustomEasingDemo()
+    var body: some View {
+        VStack {
+            Rectangle()
+                .fill(Color.green)
+                .frame(width: 60, height: 60)
+                .offset(x: toggle ? 120 : -120)
+                .animation(
+                    .timingCurve(0.68, -0.6, 0.32, 1.6, duration: 1.2),
+                    value: toggle
+                )
+
+            Button("Animate") {
+                toggle.toggle()
+            }
+        }
+        .navigationTitle("Custom Easing")
+        .padding()
+    }
 }
